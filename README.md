@@ -42,40 +42,7 @@ standalone-pv-energy-system-mppt/
 | `Solar.slx` | MATLAB/Simulink model supplied for the PV system study |
 | `images/simulink-model.png` | Screenshot of the top-level Simulink block diagram |
 | `images/pv-pv-characteristic.png` | Screenshot of the simulation XY Graph |
-
-## System overview
-
-The model is organized around a PV subsystem, measurement signals, a variable-resistance load arrangement, displays/scopes, an XY Graph, and a MATLAB Function block.
-
-At a high level, the intended study flow is:
-
-```text
-Solar irradiance
-       |
-       v
-   PV subsystem
-       |
-       +------> PV voltage (Vpv)
-       |
-       +------> PV current (Ipv)
-       |
-       +------> PV power (Pv)
-       |
-       +------> Displays / scopes
-       |
-       +------> XY Graph (voltage-power characteristic)
-
-Vpv and Ipv
-       |
-       v
- MATLAB Function
-       |
-       v
- Vref (reference-voltage output)
-```
-
-The diagram also shows a Variable Resistor driven by a separate `Variable R` control subsystem. In the supplied screenshot, the MATLAB Function's `Vref` output appears to be routed to a display; a feedback connection from `Vref` to the variable-resistor control is not evident.
-
+ 
 ## Simulink model analysis
 
 ### 1. PV subsystem
@@ -180,7 +147,7 @@ The power rises as the operating voltage approaches the maximum-power region, re
 
 ## Analysis of the supplied graph
 
-![Supplied XY Graph screenshot](images/pv-pv-characteristic.png)
+![Supplied XY Graph screenshot](Output.png)
 
 The screenshot shows a curve that starts near the origin, rises to a broad maximum, and then falls steeply. This overall shape is consistent with a PV P-V characteristic.
 
