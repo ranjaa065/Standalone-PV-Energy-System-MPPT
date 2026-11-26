@@ -95,7 +95,7 @@ Displays/scopes are used to observe signals during simulation. The XY Graph in t
 
 ### Simulink block diagram
 
-![Top-level Simulink block diagram](Block Diagram.png)
+![Top-level Simulink block diagram](BlockDiagram.png)
 
 ## PV mathematical model and characteristics
 
