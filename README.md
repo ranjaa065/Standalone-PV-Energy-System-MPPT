@@ -29,12 +29,11 @@ A MATLAB/Simulink study of a stand-alone photovoltaic (PV) system. The supplied 
 
 ```text
 standalone-pv-energy-system-mppt/
-│
-├── README.md
-├── Solar.slx
-└── images/
-    ├── simulink-model.png
-    └── pv-pv-characteristic.png
+ README.md
+ Solar.slx
+ images/
+     Block Diagram.png
+     Output.png
 ```
 
 | File | Description |
@@ -49,7 +48,7 @@ standalone-pv-energy-system-mppt/
 
 The large subsystem on the left represents the photovoltaic source. It has electrical positive and negative terminals and measurement outputs identified in the diagram, including `Ipv`, `Vpv`, and `Pv`.
 
-A Constant block labelled `1000` is connected to the irradiance input. This indicates a solar irradiance input of **1000 W/m²** in the shown configuration.
+A Constant block labelled `1000` is connected to the irradiance input. This indicates a solar irradiance input of 1000 W/m² in the shown configuration.
 
 The exact PV module rating, cell parameters, series/parallel configuration, temperature, and nameplate specifications are not provided in the screenshots. Those values should be read from the subsystem mask/block parameters before being stated as model specifications.
 
@@ -57,8 +56,8 @@ The exact PV module rating, cell parameters, series/parallel configuration, temp
 
 The PV subsystem exposes voltage and current signals:
 
-- `Vpv`: PV terminal voltage, measured in volts (V).
-- `Ipv`: PV output current, measured in amperes (A).
+1.`Vpv`: PV terminal voltage, measured in volts (V).
+2.`Ipv`: PV output current, measured in amperes (A).
 
 These signals are routed to displays and to the MATLAB Function block. The voltage and current are the quantities needed to calculate PV output power.
 
@@ -67,14 +66,14 @@ These signals are routed to displays and to the MATLAB Function block. The volta
 The model exposes a signal labelled `Pv`, representing PV power. The fundamental relationship is:
 
 \[
-P_{pv}=V_{pv}\times I_{pv}
+P_(pv)=V_(pv)\times I_(pv)
 \]
 
 where:
 
-- \(P_{pv}\) = PV output power in watts (W)
-- \(V_{pv}\) = PV output voltage in volts (V)
-- \(I_{pv}\) = PV output current in amperes (A)
+- \(P_(pv)\) = PV output power in watts (W)
+- \(V_(pv)\) = PV output voltage in volts (V)
+- \(I_(pv)\) = PV output current in amperes (A)
 
 If `Pv` is generated inside the PV subsystem, confirm its implementation and units in that subsystem. If it is calculated externally, use a Product block with `Vpv` and `Ipv` as inputs.
 
@@ -105,23 +104,23 @@ Displays/scopes are used to observe signals during simulation. The XY Graph in t
 The instantaneous electrical output power is:
 
 \[
-P_{pv}=V_{pv}I_{pv}
+P_(pv)=V_(pv)I_(pv)
 \]
 
 For example, if the measured voltage is 24 V and measured current is 6.75 A, then:
 
 \[
-P_{pv}=24\times6.75=162\text{ W}
+P_(pv)=24\times6.75=162\text( W)
 \]
 
-This is only an arithmetic illustration. It is **not** a claim that the model produced exactly 24 V and 6.75 A.
+This is only an arithmetic illustration. It is not a claim that the model produced exactly 24 V and 6.75 A.
 
 ### I-V characteristic
 
 The I-V characteristic plots PV current against PV voltage:
 
-- X-axis: \(V_{pv}\) (V)
-- Y-axis: \(I_{pv}\) (A)
+- X-axis: \(V_(pv)\) (V)
+- Y-axis: \(I_(pv)\) (A)
 
 It describes how the PV module's output current changes with terminal voltage under a specified irradiance and temperature.
 
@@ -129,8 +128,8 @@ It describes how the PV module's output current changes with terminal voltage un
 
 The P-V characteristic plots PV power against PV voltage:
 
-- X-axis: \(V_{pv}\) (V)
-- Y-axis: \(P_{pv}\) (W)
+- X-axis: \(V_(pv)\) (V)
+- Y-axis: \(P_(pv)\) (W)
 
 The power rises as the operating voltage approaches the maximum-power region, reaches a peak, and then falls as the voltage approaches open-circuit voltage.
 
@@ -138,11 +137,11 @@ The power rises as the operating voltage approaches the maximum-power region, re
 
 | Term | Meaning |
 |---|---|
-| \(V_{oc}\) | Open-circuit voltage: voltage when output current is zero |
-| \(I_{sc}\) | Short-circuit current: current when terminal voltage is approximately zero |
-| \(V_{MPP}\) | Voltage at the maximum power point |
-| \(I_{MPP}\) | Current at the maximum power point |
-| \(P_{MPP}\) | Maximum power, \(V_{MPP}\times I_{MPP}\) |
+| \(V_(oc)\) | Open-circuit voltage: voltage when output current is zero |
+| \(I_(Sc)\) | Short-circuit current: current when terminal voltage is approximately zero |
+| \(V_(MPP)\) | Voltage at the maximum power point |
+| \(I_(MPP)\) | Current at the maximum power point |
+| \(P_(MPP)\) | Maximum power, \(V_(MPP)\times I_(MPP)\) |
 | Irradiance | Incident solar power per unit area, expressed in W/m² |
 
 ## Analysis of the supplied graph
@@ -200,7 +199,7 @@ Vref=Vpv
 ### Meaning of the variables in the supplied code
 
 | Variable | Role in the supplied code |
-|---|---|
+ 
 | `Vpv` | Measured PV voltage input; it is also modified locally before output |
 | `Ipv` | Measured PV current input |
 | `V` | Local voltage variable initialized to 52 on each function call |
@@ -213,13 +212,13 @@ Vref=Vpv
 The initial local power is:
 
 \[
-P=52\times0.001=0.052\text{ W}
+P=52\times0.001=0.052\text( W)
 \]
 
 The present measured power is:
 
 \[
-P_{new}=V_{pv}I_{pv}
+P_{new}=V_(pv)I_(pv)
 \]
 
 The function compares `Pnew` with `P` and uses voltage comparisons to choose an increment or decrement of `c`.
@@ -319,7 +318,7 @@ After connecting and correcting the controller:
 ## Results and objective mapping
 
 | Project objective | Evidence in the supplied project | Current assessment |
-|---|---|---|
+ 
 | Find PV voltage, current, and power | Diagram exposes `Vpv`, `Ipv`, and `Pv` signals and includes displays/scopes | Measurement paths are present; exact numerical results should be logged from a run |
 | Generate I-V and P-V characteristics | XY Graph is shown and a P-V-style screenshot is supplied | P-V-style result is supplied; separate I-V plot still needs to be generated and attached |
 | Implement MPPT | MATLAB Function accepts `Vpv` and `Ipv`, and outputs `Vref` | MPPT intent is present; previous-sample memory and the closed-loop control connection need correction and verification |
@@ -328,7 +327,7 @@ After connecting and correcting the controller:
 
 - Add axis labels and units to all graphs.
 - Generate and include both I-V and P-V plots.
-- Export simulation data and report exact \(V_{MPP}\), \(I_{MPP}\), and \(P_{MPP}\).
+- Export simulation data and report exact \(V_(MPP)\), \(I_MPP)\), and \(P_(MPP)\).
 - Document PV module parameters, temperature, irradiance, and series/parallel configuration.
 - Correct the MPPT function to retain previous-sample values.
 - Connect the MPPT reference to a real control path.
