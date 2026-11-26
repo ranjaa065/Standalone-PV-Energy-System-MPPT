@@ -39,8 +39,8 @@ standalone-pv-energy-system-mppt/
 | File | Description |
 |---|---|
 | `Solar.slx` | MATLAB/Simulink model supplied for the PV system study |
-| `images/simulink-model.png` | Screenshot of the top-level Simulink block diagram |
-| `images/pv-pv-characteristic.png` | Screenshot of the simulation XY Graph |
+| `images/BlockDiagram.png` | Screenshot of the top-level Simulink block diagram |
+| `images/Output.png` | Screenshot of the simulation XY Graph |
  
 ## Simulink model analysis
 
