@@ -95,7 +95,7 @@ Displays/scopes are used to observe signals during simulation. The XY Graph in t
 
 ### Simulink block diagram
 
-![Top-level Simulink block diagram](BlockDiagram.png)
+![Top-level Simulink block diagram](Block Diagram.png)
 
 ## PV mathematical model and characteristics
 
@@ -318,7 +318,6 @@ After connecting and correcting the controller:
 ## Results and objective mapping
 
 | Project objective | Evidence in the supplied project | Current assessment |
- 
 | Find PV voltage, current, and power | Diagram exposes `Vpv`, `Ipv`, and `Pv` signals and includes displays/scopes | Measurement paths are present; exact numerical results should be logged from a run |
 | Generate I-V and P-V characteristics | XY Graph is shown and a P-V-style screenshot is supplied | P-V-style result is supplied; separate I-V plot still needs to be generated and attached |
 | Implement MPPT | MATLAB Function accepts `Vpv` and `Ipv`, and outputs `Vref` | MPPT intent is present; previous-sample memory and the closed-loop control connection need correction and verification |
